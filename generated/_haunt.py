@@ -17,12 +17,64 @@ class Stub:
         self._actor_id = actor_id
         self._transport = transport if transport is not None else _default_client()
 
+    def add_alert(_self, key: _models.RpcMethodAddAlertParameter0) -> _models.RpcMethodAddAlertResult:
+        """Link a county alert to this haunt once. Returns True the first time."""
+        _args = _arguments([_argument(key, _TypeAdapter(_models.RpcMethodAddAlertParameter0))], [_UNSET])
+        _result = _self._transport.invoke('Haunt', _self._actor_id, 'add_alert', _args)
+        _adapter: _TypeAdapter[_models.RpcMethodAddAlertResult] = _TypeAdapter(_models.RpcMethodAddAlertResult)
+        return _adapter.validate_json(_json.dumps(_result), strict=True)
+
+    def add_articles(_self, items_json: _models.RpcMethodAddArticlesParameter0, at: _models.RpcMethodAddArticlesParameter1) -> _models.RpcMethodAddArticlesResult:
+        """Herald files articles (JSON list). Returns ids of the ones that were new."""
+        _args = _arguments([_argument(items_json, _TypeAdapter(_models.RpcMethodAddArticlesParameter0)), _argument(at, _TypeAdapter(_models.RpcMethodAddArticlesParameter1))], [_UNSET, _UNSET])
+        _result = _self._transport.invoke('Haunt', _self._actor_id, 'add_articles', _args)
+        _adapter: _TypeAdapter[_models.RpcMethodAddArticlesResult] = _TypeAdapter(_models.RpcMethodAddArticlesResult)
+        return _adapter.validate_json(_json.dumps(_result), strict=True)
+
+    def add_report(_self, agency: _models.RpcMethodAddReportParameter0, report_json: _models.RpcMethodAddReportParameter1) -> _models.RpcMethodAddReportResult:
+        """Store one agency's report of this quake. Returns True if it is new or changed."""
+        _args = _arguments([_argument(agency, _TypeAdapter(_models.RpcMethodAddReportParameter0)), _argument(report_json, _TypeAdapter(_models.RpcMethodAddReportParameter1))], [_UNSET, _UNSET])
+        _result = _self._transport.invoke('Haunt', _self._actor_id, 'add_report', _args)
+        _adapter: _TypeAdapter[_models.RpcMethodAddReportResult] = _TypeAdapter(_models.RpcMethodAddReportResult)
+        return _adapter.validate_json(_json.dumps(_result), strict=True)
+
     def close(_self, at: _models.RpcMethodCloseParameter0) -> _models.RpcMethodCloseResult:
         """Scouts call this when an event disappears from its feed."""
         _args = _arguments([_argument(at, _TypeAdapter(_models.RpcMethodCloseParameter0))], [_UNSET])
         _result = _self._transport.invoke('Haunt', _self._actor_id, 'close', _args)
         _adapter: _TypeAdapter[_models.RpcMethodCloseResult] = _TypeAdapter(_models.RpcMethodCloseResult)
         return _adapter.validate_json(_json.dumps(_result), strict=True)
+
+    def last_news_check(_self) -> _models.RpcMethodLastNewsCheckResult:
+        """Invoke Haunt.last_news_check synchronously.
+        
+        Arguments and results are validated against the actor contract.
+        Remote failures raise ActorInvocationError.
+        """
+        _args = _arguments([], [])
+        _result = _self._transport.invoke('Haunt', _self._actor_id, 'last_news_check', _args)
+        _adapter: _TypeAdapter[_models.RpcMethodLastNewsCheckResult] = _TypeAdapter(_models.RpcMethodLastNewsCheckResult)
+        return _adapter.validate_json(_json.dumps(_result), strict=True)
+
+    def list_articles(_self) -> _models.RpcMethodListArticlesResult:
+        """Invoke Haunt.list_articles synchronously.
+        
+        Arguments and results are validated against the actor contract.
+        Remote failures raise ActorInvocationError.
+        """
+        _args = _arguments([], [])
+        _result = _self._transport.invoke('Haunt', _self._actor_id, 'list_articles', _args)
+        _adapter: _TypeAdapter[_models.RpcMethodListArticlesResult] = _TypeAdapter(_models.RpcMethodListArticlesResult)
+        return _adapter.validate_json(_json.dumps(_result), strict=True)
+
+    def mark_checked(_self, article_id: _models.RpcMethodMarkCheckedParameter0, role: _models.RpcMethodMarkCheckedParameter1) -> None:
+        """Invoke Haunt.mark_checked synchronously.
+        
+        Arguments and results are validated against the actor contract.
+        Remote failures raise ActorInvocationError.
+        """
+        _args = _arguments([_argument(article_id, _TypeAdapter(_models.RpcMethodMarkCheckedParameter0)), _argument(role, _TypeAdapter(_models.RpcMethodMarkCheckedParameter1))], [_UNSET, _UNSET])
+        _result = _self._transport.invoke('Haunt', _self._actor_id, 'mark_checked', _args)
 
     def needs_analysis(_self) -> _models.RpcMethodNeedsAnalysisResult:
         """Invoke Haunt.needs_analysis synchronously.
@@ -45,6 +97,37 @@ class Stub:
         _result = _self._transport.invoke('Haunt', _self._actor_id, 'needs_story', _args)
         _adapter: _TypeAdapter[_models.RpcMethodNeedsStoryResult] = _TypeAdapter(_models.RpcMethodNeedsStoryResult)
         return _adapter.validate_json(_json.dumps(_result), strict=True)
+
+    def pending_articles(_self, role: _models.RpcMethodPendingArticlesParameter0) -> _models.RpcMethodPendingArticlesResult:
+        """Invoke Haunt.pending_articles synchronously.
+        
+        Arguments and results are validated against the actor contract.
+        Remote failures raise ActorInvocationError.
+        """
+        _args = _arguments([_argument(role, _TypeAdapter(_models.RpcMethodPendingArticlesParameter0))], [_UNSET])
+        _result = _self._transport.invoke('Haunt', _self._actor_id, 'pending_articles', _args)
+        _adapter: _TypeAdapter[_models.RpcMethodPendingArticlesResult] = _TypeAdapter(_models.RpcMethodPendingArticlesResult)
+        return _adapter.validate_json(_json.dumps(_result), strict=True)
+
+    def reports(_self) -> _models.RpcMethodReportsResult:
+        """Invoke Haunt.reports synchronously.
+        
+        Arguments and results are validated against the actor contract.
+        Remote failures raise ActorInvocationError.
+        """
+        _args = _arguments([], [])
+        _result = _self._transport.invoke('Haunt', _self._actor_id, 'reports', _args)
+        _adapter: _TypeAdapter[_models.RpcMethodReportsResult] = _TypeAdapter(_models.RpcMethodReportsResult)
+        return _adapter.validate_json(_json.dumps(_result), strict=True)
+
+    def set_consensus(_self, text: _models.RpcMethodSetConsensusParameter0) -> None:
+        """Invoke Haunt.set_consensus synchronously.
+        
+        Arguments and results are validated against the actor contract.
+        Remote failures raise ActorInvocationError.
+        """
+        _args = _arguments([_argument(text, _TypeAdapter(_models.RpcMethodSetConsensusParameter0))], [_UNSET])
+        _result = _self._transport.invoke('Haunt', _self._actor_id, 'set_consensus', _args)
 
     def set_story(_self, story: _models.RpcMethodSetStoryParameter0, for_verdict: _models.RpcMethodSetStoryParameter1) -> None:
         """Invoke Haunt.set_story synchronously.
@@ -118,12 +201,64 @@ class AsyncStub:
         self._actor_id = actor_id
         self._transport = transport if transport is not None else _default_async_client()
 
+    async def add_alert(_self, key: _models.RpcMethodAddAlertParameter0) -> _models.RpcMethodAddAlertResult:
+        """Link a county alert to this haunt once. Returns True the first time."""
+        _args = _arguments([_argument(key, _TypeAdapter(_models.RpcMethodAddAlertParameter0))], [_UNSET])
+        _result = await _self._transport.invoke('Haunt', _self._actor_id, 'add_alert', _args)
+        _adapter: _TypeAdapter[_models.RpcMethodAddAlertResult] = _TypeAdapter(_models.RpcMethodAddAlertResult)
+        return _adapter.validate_json(_json.dumps(_result), strict=True)
+
+    async def add_articles(_self, items_json: _models.RpcMethodAddArticlesParameter0, at: _models.RpcMethodAddArticlesParameter1) -> _models.RpcMethodAddArticlesResult:
+        """Herald files articles (JSON list). Returns ids of the ones that were new."""
+        _args = _arguments([_argument(items_json, _TypeAdapter(_models.RpcMethodAddArticlesParameter0)), _argument(at, _TypeAdapter(_models.RpcMethodAddArticlesParameter1))], [_UNSET, _UNSET])
+        _result = await _self._transport.invoke('Haunt', _self._actor_id, 'add_articles', _args)
+        _adapter: _TypeAdapter[_models.RpcMethodAddArticlesResult] = _TypeAdapter(_models.RpcMethodAddArticlesResult)
+        return _adapter.validate_json(_json.dumps(_result), strict=True)
+
+    async def add_report(_self, agency: _models.RpcMethodAddReportParameter0, report_json: _models.RpcMethodAddReportParameter1) -> _models.RpcMethodAddReportResult:
+        """Store one agency's report of this quake. Returns True if it is new or changed."""
+        _args = _arguments([_argument(agency, _TypeAdapter(_models.RpcMethodAddReportParameter0)), _argument(report_json, _TypeAdapter(_models.RpcMethodAddReportParameter1))], [_UNSET, _UNSET])
+        _result = await _self._transport.invoke('Haunt', _self._actor_id, 'add_report', _args)
+        _adapter: _TypeAdapter[_models.RpcMethodAddReportResult] = _TypeAdapter(_models.RpcMethodAddReportResult)
+        return _adapter.validate_json(_json.dumps(_result), strict=True)
+
     async def close(_self, at: _models.RpcMethodCloseParameter0) -> _models.RpcMethodCloseResult:
         """Scouts call this when an event disappears from its feed."""
         _args = _arguments([_argument(at, _TypeAdapter(_models.RpcMethodCloseParameter0))], [_UNSET])
         _result = await _self._transport.invoke('Haunt', _self._actor_id, 'close', _args)
         _adapter: _TypeAdapter[_models.RpcMethodCloseResult] = _TypeAdapter(_models.RpcMethodCloseResult)
         return _adapter.validate_json(_json.dumps(_result), strict=True)
+
+    async def last_news_check(_self) -> _models.RpcMethodLastNewsCheckResult:
+        """Invoke Haunt.last_news_check asynchronously.
+        
+        Arguments and results are validated against the actor contract.
+        Remote failures raise ActorInvocationError.
+        """
+        _args = _arguments([], [])
+        _result = await _self._transport.invoke('Haunt', _self._actor_id, 'last_news_check', _args)
+        _adapter: _TypeAdapter[_models.RpcMethodLastNewsCheckResult] = _TypeAdapter(_models.RpcMethodLastNewsCheckResult)
+        return _adapter.validate_json(_json.dumps(_result), strict=True)
+
+    async def list_articles(_self) -> _models.RpcMethodListArticlesResult:
+        """Invoke Haunt.list_articles asynchronously.
+        
+        Arguments and results are validated against the actor contract.
+        Remote failures raise ActorInvocationError.
+        """
+        _args = _arguments([], [])
+        _result = await _self._transport.invoke('Haunt', _self._actor_id, 'list_articles', _args)
+        _adapter: _TypeAdapter[_models.RpcMethodListArticlesResult] = _TypeAdapter(_models.RpcMethodListArticlesResult)
+        return _adapter.validate_json(_json.dumps(_result), strict=True)
+
+    async def mark_checked(_self, article_id: _models.RpcMethodMarkCheckedParameter0, role: _models.RpcMethodMarkCheckedParameter1) -> None:
+        """Invoke Haunt.mark_checked asynchronously.
+        
+        Arguments and results are validated against the actor contract.
+        Remote failures raise ActorInvocationError.
+        """
+        _args = _arguments([_argument(article_id, _TypeAdapter(_models.RpcMethodMarkCheckedParameter0)), _argument(role, _TypeAdapter(_models.RpcMethodMarkCheckedParameter1))], [_UNSET, _UNSET])
+        _result = await _self._transport.invoke('Haunt', _self._actor_id, 'mark_checked', _args)
 
     async def needs_analysis(_self) -> _models.RpcMethodNeedsAnalysisResult:
         """Invoke Haunt.needs_analysis asynchronously.
@@ -146,6 +281,37 @@ class AsyncStub:
         _result = await _self._transport.invoke('Haunt', _self._actor_id, 'needs_story', _args)
         _adapter: _TypeAdapter[_models.RpcMethodNeedsStoryResult] = _TypeAdapter(_models.RpcMethodNeedsStoryResult)
         return _adapter.validate_json(_json.dumps(_result), strict=True)
+
+    async def pending_articles(_self, role: _models.RpcMethodPendingArticlesParameter0) -> _models.RpcMethodPendingArticlesResult:
+        """Invoke Haunt.pending_articles asynchronously.
+        
+        Arguments and results are validated against the actor contract.
+        Remote failures raise ActorInvocationError.
+        """
+        _args = _arguments([_argument(role, _TypeAdapter(_models.RpcMethodPendingArticlesParameter0))], [_UNSET])
+        _result = await _self._transport.invoke('Haunt', _self._actor_id, 'pending_articles', _args)
+        _adapter: _TypeAdapter[_models.RpcMethodPendingArticlesResult] = _TypeAdapter(_models.RpcMethodPendingArticlesResult)
+        return _adapter.validate_json(_json.dumps(_result), strict=True)
+
+    async def reports(_self) -> _models.RpcMethodReportsResult:
+        """Invoke Haunt.reports asynchronously.
+        
+        Arguments and results are validated against the actor contract.
+        Remote failures raise ActorInvocationError.
+        """
+        _args = _arguments([], [])
+        _result = await _self._transport.invoke('Haunt', _self._actor_id, 'reports', _args)
+        _adapter: _TypeAdapter[_models.RpcMethodReportsResult] = _TypeAdapter(_models.RpcMethodReportsResult)
+        return _adapter.validate_json(_json.dumps(_result), strict=True)
+
+    async def set_consensus(_self, text: _models.RpcMethodSetConsensusParameter0) -> None:
+        """Invoke Haunt.set_consensus asynchronously.
+        
+        Arguments and results are validated against the actor contract.
+        Remote failures raise ActorInvocationError.
+        """
+        _args = _arguments([_argument(text, _TypeAdapter(_models.RpcMethodSetConsensusParameter0))], [_UNSET])
+        _result = await _self._transport.invoke('Haunt', _self._actor_id, 'set_consensus', _args)
 
     async def set_story(_self, story: _models.RpcMethodSetStoryParameter0, for_verdict: _models.RpcMethodSetStoryParameter1) -> None:
         """Invoke Haunt.set_story asynchronously.

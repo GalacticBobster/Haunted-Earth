@@ -119,3 +119,39 @@ def analyze(h: dict, others: list[dict]) -> dict:
         parts.append(f"{len(near)} other haunt(s) within 300 km; nearest: {o.get('title')} ({d:.0f} km)")
 
     return {"verdict": "; ".join(parts), "facts": facts}
+
+
+# ---------------------------------------------------------------- aftershock outlook
+def aftershock_outlook(mag: float, hours_since: float) -> dict:
+    """USGS-style aftershock forecast with generic (Reasenberg & Jones 1989) parameters.
+
+    Returns expected counts and probabilities for windows starting now, plus how long the
+    sequence stays active (Omori decay of the rate).
+    """
+    t0 = max(hours_since, 0.05) / 24.0                 # days since mainshock
+    windows = {"next 24 h": 1.0, "next 7 days": 7.0, "next 30 days": 30.0, "next year": 365.0}
+    mags = [m for m in (3.0, 4.0, 5.0, 6.0, 7.0) if m < mag + 0.05] or [mag - 1]
+    table = []
+    for m in mags:
+        row = {"magnitude": f"M{m:.0f}+"}
+        for label, span in windows.items():
+            n = aftershock_count(mag, m, t0, t0 + span)
+            row[label] = f"{pct(1 - math.exp(-n))} (~{n:.1f})" if n >= 0.05 else pct(1 - math.exp(-n))
+        table.append(row)
+
+    def daily_rate(t_days: float, m_min: float = 3.0) -> float:
+        return 10 ** (RJ_A + RJ_B * (mag - m_min)) * (t_days + RJ_C) ** (-RJ_P)
+
+    rate_now = daily_rate(t0)
+    # days until the M3+ rate falls below one per day / one per 10 days (Omori decay)
+    def until(target: float) -> float:
+        k = 10 ** (RJ_A + RJ_B * (mag - 3.0))
+        return max(0.0, (k / target) ** (1 / RJ_P) - RJ_C)
+    return {
+        "table": table,
+        "rate_now_per_day": rate_now,
+        "rate_vs_day1": rate_now / daily_rate(1.0),
+        "days_to_1_per_day": until(1.0),
+        "days_to_1_per_10_days": until(0.1),
+        "largest_expected": bath_largest_aftershock(mag),
+    }

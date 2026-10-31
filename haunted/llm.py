@@ -50,6 +50,8 @@ def _template(title: str, kind: str, verdict: str) -> str:
 
 def narrate(title: str, kind: str, verdict: str) -> tuple[str, str]:
     """Return (story, source) where source is the model name or 'template'."""
+    if not os.getenv("OPENAI_API_KEY") and os.getenv("LLM_LOCAL") != "1":
+        return _template(title, kind, verdict), "template"   # fast path: no local 20B model
     try:
         client, model = _client()
         r = client.chat.completions.create(

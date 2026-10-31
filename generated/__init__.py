@@ -8,7 +8,7 @@ from durable_actors.proxy import prepare_authorization as _prepare_authorization
 from durable_actors.async_client import AsyncActorTransport as _AsyncActorTransport
 from durable_actors import ActorSession as ActorSession, ActorSessionTransport as ActorSessionTransport, ActorSessionRejectedError as ActorSessionRejectedError
 
-ActorAuthorization: _TypeAlias = actors.Globe.Authorization | actors.Haunt.Authorization
+ActorAuthorization: _TypeAlias = actors.Crew.Authorization | actors.Globe.Authorization | actors.Haunt.Authorization | actors.Mission.Authorization | actors.Outlet.Authorization | actors.Place.Authorization
 
 class ActorProxy:
     """Issue WebSocket grants for the actors in this generated package."""

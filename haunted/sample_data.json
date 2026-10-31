@@ -1,5 +1,5 @@
 {
- "_note": "Illustrative offline sample for testing only, not real events.",
+ "_note": "Illustrative offline sample for testing only: not real events, outlets or headlines (.example domains).",
  "usgs": {
   "features": [
    {
@@ -204,8 +204,38 @@
      {
       "type": "Point",
       "coordinates": [
-       134.0,
-       18.0
+       131.0,
+       18.4
+      ],
+      "date": "2026-10-30T18:00:00Z",
+      "magnitudeValue": 105,
+      "magnitudeUnit": "kts"
+     },
+     {
+      "type": "Point",
+      "coordinates": [
+       130.0,
+       18.6
+      ],
+      "date": "2026-10-31T00:00:00Z",
+      "magnitudeValue": 105,
+      "magnitudeUnit": "kts"
+     },
+     {
+      "type": "Point",
+      "coordinates": [
+       129.0,
+       18.8
+      ],
+      "date": "2026-10-31T06:00:00Z",
+      "magnitudeValue": 105,
+      "magnitudeUnit": "kts"
+     },
+     {
+      "type": "Point",
+      "coordinates": [
+       128.0,
+       19.0
       ],
       "date": "2026-10-31T12:00:00Z",
       "magnitudeValue": 105,
@@ -317,5 +347,900 @@
    "56",
    "8"
   ]
- ]
+ ],
+ "news": {
+  "eq-sample01": [
+   {
+    "url": "https://sample-wire.example/tw-quake",
+    "title": "Magnitude 6.1 earthquake strikes off Hualien, Taiwan",
+    "outlet": "sample-wire.example",
+    "published": "sample"
+   },
+   {
+    "url": "https://spooky-daily.example/tw-monster",
+    "title": "Monster 6.6-magnitude quake rocks Taiwan, tsunami fears grow",
+    "outlet": "spooky-daily.example",
+    "published": "sample"
+   },
+   {
+    "url": "https://quake-bulletin.example/tw-aftershock",
+    "title": "Taiwan: aftershock of magnitude 5.2 jolts Hualien hours after main quake",
+    "outlet": "quake-bulletin.example",
+    "published": "sample"
+   },
+   {
+    "url": "https://spooky-daily.example/tw-depth",
+    "title": "Hualien earthquake struck at a depth of 10 km, officials say",
+    "outlet": "spooky-daily.example",
+    "published": "sample"
+   },
+   {
+    "url": "https://quake-bulletin.example/tw-depth2",
+    "title": "Quake off Taiwan was 22 km deep, seismologists report",
+    "outlet": "quake-bulletin.example",
+    "published": "sample"
+   },
+   {
+    "url": "https://mastodon.example/@quakewatcher/1",
+    "title": "Felt a big one in Hualien just now, USGS says M6.1 but my app showed magnitude 7.0?? #earthquake",
+    "outlet": "@quakewatcher@mastodon.example",
+    "published": "sample",
+    "social": true
+   }
+  ],
+  "eq-sample03": [
+   {
+    "url": "https://sample-wire.example/ak",
+    "title": "M5.3 quake near Alaska's Fox Islands, no tsunami expected",
+    "outlet": "sample-wire.example",
+    "published": "sample"
+   }
+  ],
+  "eq-sample05": [
+   {
+    "url": "https://spooky-daily.example/kermadec",
+    "title": "Kermadec Islands hit by 7.2 magnitude earthquake, tsunami warning",
+    "outlet": "spooky-daily.example",
+    "published": "sample"
+   }
+  ],
+  "eo-S3": [
+   {
+    "url": "https://sample-wire.example/typhoon-1",
+    "title": "Typhoon packs 120 mph winds as it churns across the Western Pacific",
+    "outlet": "sample-wire.example",
+    "published": "sample"
+   },
+   {
+    "url": "https://spooky-daily.example/typhoon-2",
+    "title": "Category 5 super typhoon barrels toward land",
+    "outlet": "spooky-daily.example",
+    "published": "sample"
+   },
+   {
+    "url": "https://quake-bulletin.example/typhoon-3",
+    "title": "Typhoon gusts up to 150 mph possible, forecasters warn",
+    "outlet": "quake-bulletin.example",
+    "published": "sample"
+   },
+   {
+    "url": "https://sample-wire.example/typhoon-4",
+    "title": "Storm strengthens to Category 3",
+    "outlet": "sample-wire.example",
+    "published": "sample"
+   },
+   {
+    "url": "https://mastodon.example/@stormchaser/2",
+    "title": "Typhoon now Category 3 with 120 mph sustained winds per JTWC #typhoon",
+    "outlet": "@stormchaser@mastodon.example",
+    "published": "sample",
+    "social": true
+   }
+  ],
+  "aurora-north": [
+   {
+    "url": "https://sample-wire.example/aurora-1",
+    "title": "G1 storm: northern lights possible across northern US tonight",
+    "outlet": "sample-wire.example",
+    "published": "sample"
+   },
+   {
+    "url": "https://spooky-daily.example/aurora-2",
+    "title": "Massive G4 geomagnetic storm to paint skies red tonight",
+    "outlet": "spooky-daily.example",
+    "published": "sample"
+   }
+  ]
+ },
+ "quake_reports": [
+  {
+   "agency": "EMSC",
+   "mag": 6.2,
+   "lat": 23.72,
+   "lon": 121.88,
+   "depth_km": 25,
+   "like": "eq-sample01",
+   "dt_s": 4,
+   "ref": "EMSC sample-a",
+   "place": "Taiwan Region"
+  },
+  {
+   "agency": "JMA",
+   "mag": 6.6,
+   "lat": 23.8,
+   "lon": 121.9,
+   "depth_km": 20,
+   "like": "eq-sample01",
+   "dt_s": -6,
+   "ref": "JMA sample-b",
+   "place": "Taiwan Region"
+  },
+  {
+   "agency": "GDACS",
+   "mag": 6.1,
+   "lat": 23.7,
+   "lon": 121.9,
+   "depth_km": null,
+   "like": "eq-sample01",
+   "dt_s": 0,
+   "ref": "GDACS sample-c",
+   "place": "Taiwan"
+  },
+  {
+   "agency": "EMSC",
+   "mag": 5.4,
+   "lat": 53.15,
+   "lon": -168.45,
+   "depth_km": 38,
+   "like": "eq-sample03",
+   "dt_s": 3,
+   "ref": "EMSC sample-d",
+   "place": "Fox Islands, Aleutian Islands"
+  },
+  {
+   "agency": "EMSC",
+   "mag": 4.8,
+   "lat": 11.5,
+   "lon": 41.0,
+   "depth_km": 10,
+   "like": null,
+   "dt_s": 0,
+   "ref": "EMSC sample-e",
+   "place": "Afar Region, Ethiopia (sample)"
+  },
+  {
+   "agency": "JMA",
+   "mag": 5.0,
+   "lat": 36.4,
+   "lon": 141.2,
+   "depth_km": 50,
+   "like": null,
+   "dt_s": 3600,
+   "ref": "JMA sample-f",
+   "place": "Off Ibaraki, Japan (sample)"
+  }
+ ],
+ "gdacs": {
+  "type": "FeatureCollection",
+  "features": [
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      88.0,
+      17.5
+     ]
+    },
+    "properties": {
+     "eventtype": "TC",
+     "eventid": 901,
+     "name": "Sample Cyclone over the Bay of Bengal",
+     "alertlevel": "Red",
+     "country": "India",
+     "fromdate": "2026-10-30T00:00:00",
+     "iscurrent": "true",
+     "severitydata": {
+      "severity": 120,
+      "severityunit": "km/h",
+      "severitytext": ""
+     }
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      7.4,
+      9.1
+     ]
+    },
+    "properties": {
+     "eventtype": "FL",
+     "eventid": 902,
+     "name": "Sample Flood in Nigeria",
+     "alertlevel": "Orange",
+     "country": "Nigeria",
+     "fromdate": "2026-10-30T00:00:00",
+     "iscurrent": "true",
+     "severitydata": {
+      "severity": null,
+      "severityunit": null,
+      "severitytext": ""
+     }
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      44.0,
+      6.0
+     ]
+    },
+    "properties": {
+     "eventtype": "DR",
+     "eventid": 903,
+     "name": "Sample Drought, Horn of Africa",
+     "alertlevel": "Orange",
+     "country": "Somalia",
+     "fromdate": "2026-10-30T00:00:00",
+     "iscurrent": "true",
+     "severitydata": {
+      "severity": null,
+      "severityunit": null,
+      "severitytext": ""
+     }
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      127.9,
+      19.1
+     ]
+    },
+    "properties": {
+     "eventtype": "TC",
+     "eventid": 904,
+     "name": "Sample Typhoon twin (should be deduplicated)",
+     "alertlevel": "Orange",
+     "country": "Pacific",
+     "fromdate": "2026-10-30T00:00:00",
+     "iscurrent": "true",
+     "severitydata": {
+      "severity": null,
+      "severityunit": null,
+      "severitytext": ""
+     }
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Point",
+     "coordinates": [
+      121.9,
+      23.7
+     ]
+    },
+    "properties": {
+     "eventtype": "EQ",
+     "eventid": 905,
+     "name": "Sample quake Taiwan",
+     "alertlevel": "Green",
+     "country": "Taiwan",
+     "fromdate": "2026-10-30T00:00:00",
+     "iscurrent": "true",
+     "severitydata": {
+      "severity": 6.1,
+      "severityunit": "M",
+      "severitytext": ""
+     }
+    }
+   }
+  ]
+ },
+ "nws": {
+  "type": "FeatureCollection",
+  "features": [
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Polygon",
+     "coordinates": [
+      [
+       [
+        -119.35,
+        34.150000000000006
+       ],
+       [
+        -118.75,
+        34.150000000000006
+       ],
+       [
+        -118.75,
+        34.75
+       ],
+       [
+        -119.35,
+        34.75
+       ],
+       [
+        -119.35,
+        34.150000000000006
+       ]
+      ]
+     ]
+    },
+    "properties": {
+     "id": "urn:sample:1",
+     "event": "Red Flag Warning",
+     "severity": "Severe",
+     "areaDesc": "Ventura",
+     "geocode": {
+      "SAME": [
+       "006111"
+      ]
+     },
+     "headline": "Sample Red Flag Warning for Ventura County",
+     "expires": "2026-11-01T06:00:00Z"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Polygon",
+     "coordinates": [
+      [
+       [
+        -155.48,
+        19.220000000000002
+       ],
+       [
+        -155.08,
+        19.220000000000002
+       ],
+       [
+        -155.08,
+        19.62
+       ],
+       [
+        -155.48,
+        19.62
+       ],
+       [
+        -155.48,
+        19.220000000000002
+       ]
+      ]
+     ]
+    },
+    "properties": {
+     "id": "urn:sample:2",
+     "event": "Ashfall Advisory",
+     "severity": "Moderate",
+     "areaDesc": "Hawaii",
+     "geocode": {
+      "SAME": [
+       "015001"
+      ]
+     },
+     "headline": "Sample Ashfall Advisory for Hawaii County",
+     "expires": "2026-11-01T06:00:00Z"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Polygon",
+     "coordinates": [
+      [
+       [
+        -106.39999999999999,
+        39.800000000000004
+       ],
+       [
+        -105.8,
+        39.800000000000004
+       ],
+       [
+        -105.8,
+        40.4
+       ],
+       [
+        -106.39999999999999,
+        40.4
+       ],
+       [
+        -106.39999999999999,
+        39.800000000000004
+       ]
+      ]
+     ]
+    },
+    "properties": {
+     "id": "urn:sample:3",
+     "event": "Winter Storm Warning",
+     "severity": "Severe",
+     "areaDesc": "Grand",
+     "geocode": {
+      "SAME": [
+       "008049"
+      ]
+     },
+     "headline": "Sample Winter Storm Warning",
+     "expires": "2026-11-01T06:00:00Z"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": null,
+    "properties": {
+     "id": "urn:sample:4",
+     "event": "Flood Watch",
+     "severity": "Moderate",
+     "areaDesc": "Harris; Fort Bend",
+     "geocode": {
+      "SAME": [
+       "048201",
+       "048157"
+      ]
+     },
+     "headline": "Sample Flood Watch for Harris and Fort Bend",
+     "expires": "2026-11-01T06:00:00Z"
+    }
+   },
+   {
+    "type": "Feature",
+    "geometry": {
+     "type": "Polygon",
+     "coordinates": [
+      [
+       [
+        -168.70000000000002,
+        52.800000000000004
+       ],
+       [
+        -167.9,
+        52.800000000000004
+       ],
+       [
+        -167.9,
+        53.6
+       ],
+       [
+        -168.70000000000002,
+        53.6
+       ],
+       [
+        -168.70000000000002,
+        52.800000000000004
+       ]
+      ]
+     ]
+    },
+    "properties": {
+     "id": "urn:sample:5",
+     "event": "Tsunami Advisory",
+     "severity": "Moderate",
+     "areaDesc": "Aleutians West",
+     "geocode": {
+      "SAME": [
+       "002016"
+      ]
+     },
+     "headline": "Sample Tsunami Advisory",
+     "expires": "2026-11-01T06:00:00Z"
+    }
+   }
+  ]
+ },
+ "places": [
+  {
+   "id": "basco-batanes",
+   "name": "Basco, Batanes (sample)",
+   "lat": 20.45,
+   "lon": 121.97,
+   "coastal": true
+  }
+ ],
+ "weather": {
+  "mumbai": {
+   "temp": [
+    31,
+    33,
+    34,
+    35,
+    34,
+    32
+   ],
+   "rh": [
+    78,
+    74,
+    72,
+    70,
+    73,
+    80
+   ],
+   "gust": [
+    25,
+    30,
+    35,
+    30,
+    28,
+    22
+   ]
+  },
+  "san-francisco": {
+   "temp": [
+    14,
+    17,
+    19,
+    18,
+    15,
+    13
+   ],
+   "rh": [
+    80,
+    65,
+    55,
+    60,
+    75,
+    85
+   ],
+   "gust": [
+    30,
+    45,
+    70,
+    72,
+    50,
+    30
+   ]
+  },
+  "lagos": {
+   "temp": [
+    27,
+    30,
+    31,
+    32,
+    30,
+    28
+   ],
+   "rh": [
+    88,
+    80,
+    76,
+    74,
+    80,
+    90
+   ],
+   "gust": [
+    15,
+    20,
+    25,
+    22,
+    18,
+    15
+   ]
+  }
+ },
+ "resources": {
+  "basco-batanes": {
+   "elements": [
+    {
+     "type": "node",
+     "id": 1,
+     "lat": 20.449,
+     "lon": 121.97,
+     "tags": {
+      "amenity": "hospital",
+      "name": "Batanes General Hospital (sample)"
+     }
+    },
+    {
+     "type": "node",
+     "id": 2,
+     "lat": 20.452,
+     "lon": 121.968,
+     "tags": {
+      "amenity": "pharmacy",
+      "name": "Basco Pharmacy (sample)"
+     }
+    },
+    {
+     "type": "node",
+     "id": 3,
+     "lat": 20.447,
+     "lon": 121.972,
+     "tags": {
+      "amenity": "drinking_water",
+      "name": "Town water point (sample)"
+     }
+    },
+    {
+     "type": "node",
+     "id": 4,
+     "lat": 20.455,
+     "lon": 121.965,
+     "tags": {
+      "amenity": "shelter",
+      "shelter_type": "public_transport",
+      "name": "Bus stop (not a shelter)"
+     }
+    }
+   ]
+  },
+  "mumbai": {
+   "elements": [
+    {
+     "type": "node",
+     "id": 11,
+     "lat": 19.07,
+     "lon": 72.88,
+     "tags": {
+      "amenity": "hospital",
+      "name": "City Hospital (sample)"
+     }
+    },
+    {
+     "type": "node",
+     "id": 12,
+     "lat": 19.09,
+     "lon": 72.86,
+     "tags": {
+      "amenity": "hospital",
+      "name": "General Hospital (sample)"
+     }
+    },
+    {
+     "type": "node",
+     "id": 13,
+     "lat": 19.08,
+     "lon": 72.89,
+     "tags": {
+      "amenity": "clinic",
+      "name": "Ward Clinic (sample)"
+     }
+    },
+    {
+     "type": "node",
+     "id": 14,
+     "lat": 19.075,
+     "lon": 72.87,
+     "tags": {
+      "emergency": "assembly_point",
+      "name": "Maidan assembly point (sample)"
+     }
+    },
+    {
+     "type": "node",
+     "id": 15,
+     "lat": 19.085,
+     "lon": 72.875,
+     "tags": {
+      "amenity": "drinking_water",
+      "name": "Public tap (sample)"
+     }
+    },
+    {
+     "type": "node",
+     "id": 16,
+     "lat": 19.06,
+     "lon": 72.89,
+     "tags": {
+      "amenity": "fire_station",
+      "name": "Fire Brigade Station (sample)"
+     }
+    },
+    {
+     "type": "node",
+     "id": 17,
+     "lat": 19.081,
+     "lon": 72.881,
+     "tags": {
+      "amenity": "pharmacy",
+      "name": "24h Chemist (sample)"
+     }
+    }
+   ]
+  }
+ },
+ "aviation": {
+  "metars": {
+   "KSFO": {
+    "icaoId": "KSFO",
+    "wdir": 250,
+    "wspd": 24,
+    "wgst": 36,
+    "visib": "2",
+    "clouds": [
+     {
+      "cover": "OVC",
+      "base": 700
+     }
+    ],
+    "temp": 13,
+    "altim": 1004,
+    "rawOb": "KSFO 312156Z 25024G36KT 2SM -RA BR OVC007 13/12 A2965 (sample)"
+   },
+   "KSAN": {
+    "icaoId": "KSAN",
+    "wdir": 270,
+    "wspd": 8,
+    "wgst": null,
+    "visib": "10+",
+    "clouds": [
+     {
+      "cover": "SCT",
+      "base": 4000
+     }
+    ],
+    "temp": 19,
+    "altim": 1015,
+    "rawOb": "KSAN 312151Z 27008KT 10SM SCT040 19/12 A2997 (sample)"
+   },
+   "KLAX": {
+    "icaoId": "KLAX",
+    "wdir": 250,
+    "wspd": 12,
+    "wgst": null,
+    "visib": "10+",
+    "clouds": [
+     {
+      "cover": "BKN",
+      "base": 2500
+     }
+    ],
+    "temp": 18,
+    "altim": 1014,
+    "rawOb": "KLAX 312153Z 25012KT 10SM BKN025 18/13 A2995 (sample)"
+   },
+   "KDEN": {
+    "icaoId": "KDEN",
+    "wdir": 200,
+    "wspd": 15,
+    "wgst": 25,
+    "visib": "10+",
+    "clouds": [],
+    "temp": 31,
+    "altim": 1008,
+    "rawOb": "KDEN 312153Z 20015G25KT 10SM CLR 31/02 A2977 (sample)"
+   },
+   "RJTT": {
+    "icaoId": "RJTT",
+    "wdir": 160,
+    "wspd": 18,
+    "wgst": 30,
+    "visib": "3",
+    "clouds": [
+     {
+      "cover": "BKN",
+      "base": 1500
+     },
+     {
+      "cover": "FEW",
+      "base": 2500
+     }
+    ],
+    "temp": 22,
+    "altim": 1002,
+    "rawOb": "RJTT 312200Z 16018G30KT 3000 +TSRA FEW025CB BKN015 22/20 Q1002 (sample)"
+   },
+   "RCTP": {
+    "icaoId": "RCTP",
+    "wdir": 140,
+    "wspd": 28,
+    "wgst": 40,
+    "visib": "10+",
+    "clouds": [
+     {
+      "cover": "BKN",
+      "base": 2000
+     }
+    ],
+    "temp": 25,
+    "altim": 1006,
+    "rawOb": "RCTP 312200Z 14028G40KT 9999 BKN020 25/21 Q1006 (sample)"
+   },
+   "PANC": {
+    "icaoId": "PANC",
+    "wdir": 10,
+    "wspd": 6,
+    "wgst": null,
+    "visib": "10+",
+    "clouds": [
+     {
+      "cover": "FEW",
+      "base": 5000
+     }
+    ],
+    "temp": 2,
+    "altim": 1018,
+    "rawOb": "PANC 312153Z 01006KT 10SM FEW050 02/M04 A3006 (sample)"
+   },
+   "KSEA": {
+    "icaoId": "KSEA",
+    "wdir": 180,
+    "wspd": 10,
+    "wgst": null,
+    "visib": "6",
+    "clouds": [
+     {
+      "cover": "BKN",
+      "base": 2800
+     }
+    ],
+    "temp": 11,
+    "altim": 1012,
+    "rawOb": "KSEA 312153Z 18010KT 6SM BKN028 11/09 A2989 (sample)"
+   }
+  },
+  "sigmets": [
+   {
+    "hazard": "CONVECTIVE",
+    "airSigmetId": "S-CONV-1",
+    "coords": [
+     {
+      "lat": 34.5,
+      "lon": 138.5
+     },
+     {
+      "lat": 36.5,
+      "lon": 138.5
+     },
+     {
+      "lat": 36.5,
+      "lon": 141.0
+     },
+     {
+      "lat": 34.5,
+      "lon": 141.0
+     }
+    ],
+    "rawAirSigmet": "SAMPLE: EMBD TS OBS AND FCST TOP FL450"
+   },
+   {
+    "hazard": "VA",
+    "isigmetId": "S-ASH-1",
+    "coords": [
+     {
+      "lat": 60.0,
+      "lon": -152.0
+     },
+     {
+      "lat": 62.5,
+      "lon": -152.0
+     },
+     {
+      "lat": 62.5,
+      "lon": -148.0
+     },
+     {
+      "lat": 60.0,
+      "lon": -148.0
+     }
+    ],
+    "rawSigmet": "SAMPLE: VA ERUPTION MT SPURR, VA CLD OBS SFC/FL300"
+   }
+  ],
+  "traffic": {
+   "KSFO": {
+    "airborne": 18,
+    "on_ground": 64
+   },
+   "RJTT": {
+    "airborne": 25,
+    "on_ground": 90
+   },
+   "KDEN": {
+    "airborne": 30,
+    "on_ground": 110
+   }
+  }
+ }
 }

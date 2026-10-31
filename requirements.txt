@@ -1,0 +1,10 @@
+# For Streamlit Community Cloud (the website only; agents run on your laptop)
+streamlit>=1.40
+plotly>=5.24
+pandas>=2.2
+supabase>=2.10
+python-dotenv>=1.0
+requests>=2.32
+streamlit-js-eval>=0.1.7
+qrcode>=7.4
+pillow>=10.0

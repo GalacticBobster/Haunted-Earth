@@ -2,6 +2,10 @@
 
 Channels:  #sightings  scout -> analyst      #verdicts  analyst -> narrator
            #stories    narrator -> everyone (the dashboard reads this too, through Supabase)
+           #news       herald -> seismologist / meteorologist / spaceweather
+           #factcheck  checkers -> judge
+           #consensus  corroborator (USGS vs EMSC vs JMA vs GDACS)
+           #alerts     sentinel (NWS county alerts near haunts)
 """
 from __future__ import annotations
 
@@ -10,9 +14,20 @@ import re
 import shutil
 import subprocess
 
-AGENTS = ("scout", "analyst", "narrator")
-CHANNELS = {"sightings": ("scout", "analyst"), "verdicts": ("analyst", "narrator"),
-            "stories": ("narrator", "scout", "analyst")}
+AGENTS = ("scout", "analyst", "narrator", "herald", "seismologist", "meteorologist",
+          "spaceweather", "judge", "corroborator", "sentinel", "warden", "quartermaster")
+CHANNELS = {
+    "sightings": ("scout", "analyst", "herald"),
+    "verdicts": ("analyst", "narrator"),
+    "stories": ("narrator", "scout", "analyst"),
+    "news": ("herald", "seismologist", "meteorologist", "spaceweather"),      # herald -> checkers
+    "factcheck": ("seismologist", "meteorologist", "spaceweather", "judge"),  # checkers -> judge
+    "consensus": ("corroborator", "analyst", "seismologist"),  # multi-agency magnitude consensus
+    "alerts": ("sentinel", "analyst", "narrator"),             # county alerts linked to haunts
+    "warnings": ("warden", "sentinel", "narrator", "quartermaster"),  # place-specific warning changes
+    "relief": ("quartermaster", "warden", "narrator"),         # relief missions and their tasks
+}
+TAG_RE = re.compile(r"\[(\w+)=([^\]]+)\]")
 ID_RE = re.compile(r"\[id=([^\]]+)\]")
 
 
@@ -59,3 +74,8 @@ def read(channel: str, as_agent: str, limit: int = 50) -> list[dict]:
 def haunt_id(text: str) -> str | None:
     m = ID_RE.search(text)
     return m.group(1) if m else None
+
+
+def tags(text: str) -> dict:
+    """'[id=eq-1] [art=ab12] ...' -> {'id': 'eq-1', 'art': 'ab12'}"""
+    return dict(TAG_RE.findall(text))

@@ -6,13 +6,17 @@ from __future__ import annotations
 
 import datetime as dt
 import json
+import os
 import pathlib
 
 import requests
 
 UA = {"User-Agent": "HauntedEarth/0.1 (hackathon demo)"}
-USGS = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson"
-EONET = "https://eonet.gsfc.nasa.gov/api/v3/events?status=open&days=20&limit=150"
+# only recent disasters: set HAUNT_MAX_DAYS in .env (default 2 days)
+MAX_DAYS = int(os.getenv("HAUNT_MAX_DAYS", "2"))
+USGS = ("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/"
+        + ("2.5_day" if MAX_DAYS <= 1 else "2.5_week" if MAX_DAYS <= 7 else "4.5_month") + ".geojson")
+EONET = f"https://eonet.gsfc.nasa.gov/api/v3/events?status=open&days={MAX_DAYS}&limit=150"
 SWPC_KP = "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json"
 SAMPLE = pathlib.Path(__file__).parent / "sample_data.json"
 
@@ -39,7 +43,7 @@ def _get(url: str) -> object:
 
 
 def _quake_status(age_h: float) -> str:
-    return "awake" if age_h < 6 else "fading" if age_h < 24 else "closed"
+    return "awake" if age_h < 6 else "fading" if age_h < 24 * MAX_DAYS else "closed"
 
 
 def parse_usgs(data: dict, t_now: dt.datetime) -> list[dict]:
@@ -92,6 +96,9 @@ def parse_eonet(data: dict) -> list[dict]:
             "status": "closed" if e.get("closed") else "awake",
             "seen_at": g.get("date") or iso(now()),
             "extra": {"category": cats[0].get("title"), "magnitude": mv,
+                      "track": [[gg["coordinates"][1], gg["coordinates"][0], gg.get("date")]
+                                for gg in (e.get("geometry") or [])[-4:]
+                                if gg.get("type") == "Point" and gg.get("coordinates")],
                       "magnitude_unit": g.get("magnitudeUnit"),
                       "source": (e.get("sources") or [{}])[0].get("url")},
         })
@@ -122,6 +129,20 @@ def parse_kp(data: list) -> list[dict]:
     }]
 
 
+def _dedupe_gdacs(events: list[dict]) -> list[dict]:
+    """GDACS and EONET often describe the same storm/flood: keep EONET's, drop the GDACS twin."""
+    from .physics import haversine_km
+    others = [e for e in events if not e["id"].startswith("gd-")]
+    keep = []
+    for e in events:
+        if e["id"].startswith("gd-") and any(
+                o["kind"] == e["kind"] and haversine_km(o["lat"], o["lon"], e["lat"], e["lon"]) < 200
+                for o in others):
+            continue
+        keep.append(e)
+    return keep
+
+
 def fetch_all(sample: bool = False) -> tuple[list[dict], list[str]]:
     """Return (events, errors). sample=True uses bundled offline data."""
     t_now = now()
@@ -130,16 +151,21 @@ def fetch_all(sample: bool = False) -> tuple[list[dict], list[str]]:
         # shift sample quake times so they look fresh
         for f in d["usgs"]["features"]:
             f["properties"]["time"] = int((t_now.timestamp() - f["properties"]["age_h"] * 3600) * 1000)
-        return parse_usgs(d["usgs"], t_now) + parse_eonet(d["eonet"]) + parse_kp(d["kp"]), []
+        from .world import parse_gdacs
+        ev = parse_usgs(d["usgs"], t_now) + parse_eonet(d["eonet"]) + parse_kp(d["kp"])
+        ev += parse_gdacs(d.get("gdacs", {}))[0]
+        return _dedupe_gdacs(ev), []
 
     events, errors = [], []
     for name, url, parse in (
         ("USGS", USGS, lambda d: parse_usgs(d, t_now)),
         ("EONET", EONET, parse_eonet),
         ("SWPC", SWPC_KP, parse_kp),
+        ("GDACS", "https://www.gdacs.org/gdacsapi/api/events/geteventlist/MAP",
+         lambda d: __import__("haunted.world", fromlist=["parse_gdacs"]).parse_gdacs(d)[0]),
     ):
         try:
             events += parse(_get(url))
         except Exception as exc:  # one bad feed must not stop the others
             errors.append(f"{name}: {exc}")
-    return events, errors
+    return _dedupe_gdacs(events), errors
