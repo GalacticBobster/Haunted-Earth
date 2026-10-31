@@ -1,0 +1,321 @@
+{
+ "_note": "Illustrative offline sample for testing only, not real events.",
+ "usgs": {
+  "features": [
+   {
+    "id": "sample01",
+    "properties": {
+     "mag": 6.1,
+     "place": "38 km SE of Hualien City, Taiwan",
+     "age_h": 1.5,
+     "url": null
+    },
+    "geometry": {
+     "coordinates": [
+      121.9,
+      23.7,
+      22
+     ]
+    }
+   },
+   {
+    "id": "sample02",
+    "properties": {
+     "mag": 4.4,
+     "place": "12 km NW of The Geysers, CA",
+     "age_h": 0.6,
+     "url": null
+    },
+    "geometry": {
+     "coordinates": [
+      -122.9,
+      38.85,
+      2.1
+     ]
+    }
+   },
+   {
+    "id": "sample03",
+    "properties": {
+     "mag": 5.3,
+     "place": "Fox Islands, Aleutian Islands, Alaska",
+     "age_h": 3.0,
+     "url": null
+    },
+    "geometry": {
+     "coordinates": [
+      -168.5,
+      53.1,
+      40
+     ]
+    }
+   },
+   {
+    "id": "sample04",
+    "properties": {
+     "mag": 3.1,
+     "place": "8 km E of Ridgecrest, CA",
+     "age_h": 8.0,
+     "url": null
+    },
+    "geometry": {
+     "coordinates": [
+      -117.6,
+      35.6,
+      6
+     ]
+    }
+   },
+   {
+    "id": "sample05",
+    "properties": {
+     "mag": 5.8,
+     "place": "Kermadec Islands region",
+     "age_h": 12.0,
+     "url": null
+    },
+    "geometry": {
+     "coordinates": [
+      -177.9,
+      -29.5,
+      35
+     ]
+    }
+   },
+   {
+    "id": "sample06",
+    "properties": {
+     "mag": 4.9,
+     "place": "near the coast of central Chile",
+     "age_h": 2.2,
+     "url": null
+    },
+    "geometry": {
+     "coordinates": [
+      -71.6,
+      -33.1,
+      30
+     ]
+    }
+   },
+   {
+    "id": "sample07",
+    "properties": {
+     "mag": 2.7,
+     "place": "5 km S of Volcano, Hawaii",
+     "age_h": 0.3,
+     "url": null
+    },
+    "geometry": {
+     "coordinates": [
+      -155.25,
+      19.38,
+      1.2
+     ]
+    }
+   },
+   {
+    "id": "sample08",
+    "properties": {
+     "mag": 5.0,
+     "place": "Banda Sea",
+     "age_h": 5.0,
+     "url": null
+    },
+    "geometry": {
+     "coordinates": [
+      128.6,
+      -6.9,
+      120
+     ]
+    }
+   }
+  ]
+ },
+ "eonet": {
+  "events": [
+   {
+    "id": "S1",
+    "title": "Sample Wildfire, Ventura County, California",
+    "categories": [
+     {
+      "id": "wildfires",
+      "title": "wildfires"
+     }
+    ],
+    "closed": null,
+    "geometry": [
+     {
+      "type": "Point",
+      "coordinates": [
+       -119.1,
+       34.4
+      ],
+      "date": "2026-10-31T12:00:00Z",
+      "magnitudeValue": null,
+      "magnitudeUnit": null
+     }
+    ],
+    "sources": [
+     {
+      "url": null
+     }
+    ]
+   },
+   {
+    "id": "S2",
+    "title": "Sample Volcano Activity, Kilauea",
+    "categories": [
+     {
+      "id": "volcanoes",
+      "title": "volcanoes"
+     }
+    ],
+    "closed": null,
+    "geometry": [
+     {
+      "type": "Point",
+      "coordinates": [
+       -155.29,
+       19.41
+      ],
+      "date": "2026-10-31T12:00:00Z",
+      "magnitudeValue": null,
+      "magnitudeUnit": null
+     }
+    ],
+    "sources": [
+     {
+      "url": null
+     }
+    ]
+   },
+   {
+    "id": "S3",
+    "title": "Sample Typhoon in the Western Pacific",
+    "categories": [
+     {
+      "id": "severeStorms",
+      "title": "severeStorms"
+     }
+    ],
+    "closed": null,
+    "geometry": [
+     {
+      "type": "Point",
+      "coordinates": [
+       134.0,
+       18.0
+      ],
+      "date": "2026-10-31T12:00:00Z",
+      "magnitudeValue": 105,
+      "magnitudeUnit": "kts"
+     }
+    ],
+    "sources": [
+     {
+      "url": null
+     }
+    ]
+   },
+   {
+    "id": "S4",
+    "title": "Sample Wildfire, New South Wales, Australia",
+    "categories": [
+     {
+      "id": "wildfires",
+      "title": "wildfires"
+     }
+    ],
+    "closed": null,
+    "geometry": [
+     {
+      "type": "Point",
+      "coordinates": [
+       150.5,
+       -33.6
+      ],
+      "date": "2026-10-31T12:00:00Z",
+      "magnitudeValue": null,
+      "magnitudeUnit": null
+     }
+    ],
+    "sources": [
+     {
+      "url": null
+     }
+    ]
+   },
+   {
+    "id": "S5",
+    "title": "Sample Volcano Activity, Etna, Italy",
+    "categories": [
+     {
+      "id": "volcanoes",
+      "title": "volcanoes"
+     }
+    ],
+    "closed": null,
+    "geometry": [
+     {
+      "type": "Point",
+      "coordinates": [
+       15.0,
+       37.75
+      ],
+      "date": "2026-10-31T12:00:00Z",
+      "magnitudeValue": null,
+      "magnitudeUnit": null
+     }
+    ],
+    "sources": [
+     {
+      "url": null
+     }
+    ]
+   },
+   {
+    "id": "S6",
+    "title": "Sample Flooding, Bangladesh",
+    "categories": [
+     {
+      "id": "floods",
+      "title": "floods"
+     }
+    ],
+    "closed": null,
+    "geometry": [
+     {
+      "type": "Point",
+      "coordinates": [
+       90.4,
+       23.7
+      ],
+      "date": "2026-10-31T12:00:00Z",
+      "magnitudeValue": null,
+      "magnitudeUnit": null
+     }
+    ],
+    "sources": [
+     {
+      "url": null
+     }
+    ]
+   }
+  ]
+ },
+ "kp": [
+  [
+   "time_tag",
+   "Kp",
+   "a_running",
+   "station_count"
+  ],
+  [
+   "2026-10-31 15:00:00.000",
+   "5.33",
+   "56",
+   "8"
+  ]
+ ]
+}

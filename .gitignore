@@ -1,0 +1,6 @@
+.env
+.venv/
+logs/
+.durable-actors/
+board_local.json*
+__pycache__/
